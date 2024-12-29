@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-envs
+stringData:
+  VAULT_DEV_ROOT_TOKEN_ID: token
+  VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+  VAULT_API_ADDR: http://127.0.0.1:8201
+  VAULT_ADDR: http://0.0.0.0:8200
+  VAULT_TOKEN: token
+  # SKIP_CHOWN: true
+  SKIP_SETCAP: true
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vault
+spec:
+  terminationGracePeriodSeconds: 1
+  containers:
+    - name: server
+      image: docker.io/library/vault:1.13.3
+      envFrom:
+        - secretRef:
+            name: vault-envs
+            optional: false
+      ports:
+        - containerPort: 8200
+          hostPort: 8200
+      securityContext:
+        capabilities:
+          add:
+            - IPC_LOCK
+            - SETFCAP
+
+    - name: client
+      image: docker.io/library/vault:1.13.3
+      command:
+        - /bin/sh
+        - /vault/roles/bootstrap.sh
+      workingDir: /vault/roles
+      envFrom:
+        - secretRef:
+            name: vault-envs
+            optional: false
+      volumeMounts:
+        - name: roles
+          mountPath: /vault/roles:z
+          readOnly: true
+        - name: pubkeys
+          mountPath: /pubkeys:z
+
+  volumes:
+    - name: roles
+      hostPath:
+        path: roles
+        type: Directory
+    - name: pubkeys
+      hostPath:
+        path: pubkeys
+        type: Directory
+

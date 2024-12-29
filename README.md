@@ -67,6 +67,11 @@ pipenv sync
 Next `CMakeLists.txt`, `c` and `h` files can be formatted via tools directly or
 `make clang-format/make cmake-format` after `cmake -B build -S .`
 
+## `Examples`
+
+In order to develop, test and demo there are example(s) to
+[examples](#examples) folder.
+
 ## `References`
 
 - [podman build](https://docs.podman.io/en/v5.3.0/markdown/podman-build.1.html)
