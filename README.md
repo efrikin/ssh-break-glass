@@ -70,7 +70,7 @@ Next `CMakeLists.txt`, `c` and `h` files can be formatted via tools directly or
 ## `Examples`
 
 In order to develop, test and demo there are example(s) to
-[examples](#examples) folder.
+[examples](examples) folder.
 
 ## `References`
 

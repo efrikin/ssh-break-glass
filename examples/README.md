@@ -33,7 +33,7 @@ podman kube play \
 - `sshd/Containerfile` describes steps by building OpenSSH server, enabling
 NSS and PAM modules in AuthN/AuthZ flows.
 - `sshd.yaml` describes OpenSSH server deployment
-(It requires [Containerized Build](#containerized-build).
+(It requires [Containerized Build](../README.md#containerized-build)).
 
 ```shell
 podman kube play \
