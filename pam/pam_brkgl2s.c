@@ -25,29 +25,10 @@ pam_sm_open_session (pam_handle_t *pamh, int flags, int argc, const char **argv)
   struct pubkey_info pb;
   struct passwd *p;
 
-  if (pam_get_item (pamh, PAM_SERVICE, (const void **)&service) != PAM_SUCCESS)
-    {
-      pam_syslog (pamh, LOG_ERR, "getting PAM service error");
-      return PAM_SERVICE_ERR;
-    }
-
-  /* Does the service name match ssh or sshd ?*/
-  if (!check_service (service))
-    {
-      pam_syslog (pamh, LOG_ERR, "received %s is not equal ssh(d)", service);
-      return PAM_SERVICE_ERR;
-    }
-
-  if (pam_get_item (pamh, PAM_USER, (const void **)&username) != PAM_SUCCESS)
+  if (pam_get_item (pamh, PAM_USER, (const void **)&username)
+         != PAM_SUCCESS)
     {
       pam_syslog (pamh, LOG_ERR, "getting PAM user error");
-      return PAM_AUTH_ERR;
-    }
-
-  /* Does the user contain "break-glass" prefix ?*/
-  if (!check_username (username))
-    {
-      pam_syslog (pamh, LOG_ERR, "%s must be a break-glass user", service);
       return PAM_AUTH_ERR;
     }
 

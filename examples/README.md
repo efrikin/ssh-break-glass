@@ -61,7 +61,7 @@ pubkeys/id_ed25519-cert.pub.admin certificate**
 
 ```shell
 ssh \
-    -p2222 \
+    -p1110 \
     -i pubkeys/id_ed25519 \
     -i pubkeys/id_ed25519-cert.pub.users \
     test.brkgl2s@127.0.0.1

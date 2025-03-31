@@ -14,7 +14,7 @@ spec:
           hostPort: 2222
       volumeMounts:
         - name: break-glass-cfg
-          mountPath: /etc/ssh/sshd_config.d/break-glass.conf:z
+          mountPath: /etc/ssh/sshd_config.d/00-break-glass.conf:z
           readOnly: true
         - name: break-glass-ca
           mountPath: /etc/ssh/sshd_config.d/ca.pem:z
@@ -26,7 +26,7 @@ spec:
   volumes:
     - name: break-glass-cfg
       hostPath:
-        path: pubkeys/break-glass.conf
+        path: pubkeys/00-break-glass.conf
         type: File
     - name: break-glass-ca
       hostPath:
