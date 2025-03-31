@@ -78,6 +78,14 @@ In order to develop, test and demo there are example(s) to
 - [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
 - [CMake Language Tools](https://cmake-format.readthedocs.io/en/latest/format-usage.html)
 
+## `License`
+
+The project is distributed under different licensing terms.
+
+- The NSS and PAM modules (all code in this repository under /nss and /pam) are licensed under the Apache 2.0 License.
+- The library (partial code in this repository under /library) is licensed under the Apache 2.0 License.
+- The function del_line_matching and related code pertaining to structure are licensed under the GPLv2 License.
+
 ## `TODO`
 
 ### `@efrikin`
