@@ -21,12 +21,11 @@ pam_sm_open_session (pam_handle_t *pamh, int flags, int argc, const char **argv)
 {
 
   int len;
-  char *pubkey, *username, *service;
+  char *pubkey, *username;
   struct pubkey_info pb;
   struct passwd *p;
 
-  if (pam_get_item (pamh, PAM_USER, (const void **)&username)
-         != PAM_SUCCESS)
+  if (pam_get_item (pamh, PAM_USER, (const void **)&username) != PAM_SUCCESS)
     {
       pam_syslog (pamh, LOG_ERR, "getting PAM user error");
       return PAM_AUTH_ERR;
