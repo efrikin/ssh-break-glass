@@ -12,6 +12,8 @@ spec:
       ports:
         - containerPort: 22
           hostPort: 2222
+        - containerPort: 1110
+          hostPort: 1110
       volumeMounts:
         - name: break-glass-cfg
           mountPath: /etc/ssh/sshd_config.d/00-break-glass.conf:z
