@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+cmake-format = "0.6.13"
+clang-format = "19.1.5"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"

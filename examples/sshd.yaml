@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sshd
+spec:
+  terminationGracePeriodSeconds: 1
+  containers:
+    - name: server
+      image: sshd
+      tty: true
+      ports:
+        - containerPort: 22
+          hostPort: 2222
+        - containerPort: 1110
+          hostPort: 1110
+      volumeMounts:
+        - name: break-glass-cfg
+          mountPath: /etc/ssh/sshd_config.d/00-break-glass.conf:z
+          readOnly: true
+        - name: break-glass-ca
+          mountPath: /etc/ssh/sshd_config.d/ca.pem:z
+          readOnly: true
+        - name: tmpfs
+          mountPath: /tmpfs
+        - name: run
+          mountPath: /run
+  volumes:
+    - name: break-glass-cfg
+      hostPath:
+        path: pubkeys/00-break-glass.conf
+        type: File
+    - name: break-glass-ca
+      hostPath:
+        path: pubkeys/ca.pem
+        type: File
+    - name: tmpfs
+      emptyDir: {}
+    - name: run
+      emptyDir: {}
+

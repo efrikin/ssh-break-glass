@@ -1,0 +1,32 @@
+FROM localhost/ssh-break-glass:source AS source
+
+FROM docker.io/library/fedora:41
+
+ENV AUTHSELECT__PROFILE=ssh-break-glass
+
+COPY --from=source \
+	--chmod=0755 \
+	--chown=root:root \
+	/lib64 /lib64
+
+RUN dnf install -y openssh-server
+
+RUN authselect create-profile \
+	-b local \
+	--symlink-meta \
+	--symlink-dconf \
+	--symlink smartcard-auth \
+	--symlink postlogin \
+	--symlink fingerprint-auth \
+	--symlink password-auth \
+	--symlink system-auth ${AUTHSELECT__PROFILE}
+
+COPY etc /etc
+
+RUN authselect select custom/${AUTHSELECT__PROFILE} \
+	&& authselect check
+
+RUN ssh-keygen -A
+
+ENTRYPOINT ["/usr/sbin/init"]
+
