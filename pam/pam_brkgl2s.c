@@ -47,6 +47,7 @@ pam_sm_open_session (pam_handle_t *pamh, int flags, int argc, const char **argv)
 
      Source: man 3 pam_getenv */
   pubkey = (char *)pam_getenv (pamh, SSH_AUTH_INFO);
+  pubkey[strcspn (pubkey, "\n")] = '\0';
 
   if (pubkey == NULL)
     {
