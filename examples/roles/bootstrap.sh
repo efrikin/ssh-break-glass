@@ -47,7 +47,7 @@ vault read \
 printf "Port 22
         \nPort 1110
         \nUsePAM yes
-        \nMatch LocalPort 1110 User
+        \nMatch LocalPort 1110 User *.brkgl2s
         \tTrustedUserCAKeys /etc/ssh/sshd_config.d/ca.pem
         \tAuthenticationMethods publickey
         \tPAMServiceName brkgl2s
