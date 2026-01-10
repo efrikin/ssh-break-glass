@@ -11,7 +11,7 @@ following approaches:
 - Passwordless/Keyless AuthN
 - Principle of least privilege (PoLP)
 - Short-lived access
-- sharedless accounts
+- Accountless
 
 Here is why you can use the project:
 
