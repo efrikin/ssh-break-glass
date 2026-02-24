@@ -1,3 +1,5 @@
+# WE CONTINUE THE DEVELOPMENT AT [break-glass/ssh](https://gitlab.com/seshell/break-glass/ssh). This repository is abandoned, and no further updates will be done on the code base, nor issue/PRs will be answered or attended.
+
 ## `SSH Break-Glass`
 
 `ssh-brkgl2s` (/səˈkjʊr ʃel breɪk-ɡlæs/, ssh break-glass) provides remote access
