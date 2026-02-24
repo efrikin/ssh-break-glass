@@ -1,4 +1,4 @@
-# WE CONTINUE THE DEVELOPMENT AT [break-glass/ssh](https://gitlab.com/seshell/break-glass/ssh). This repository is abandoned, and no further updates will be done on the code base, nor issue/PRs will be answered or attended.
+# WE CONTINUE THE DEVELOPMENT AT [seshell/break-glass/ssh](https://gitlab.com/seshell/break-glass/ssh). This repository is abandoned, and no further updates will be done on the code base, nor issue/PRs will be answered or attended.
 
 ## `SSH Break-Glass`
 
